@@ -214,7 +214,7 @@
        }
        data += "\n";
 
-       StatisticSalesPerYear[] productsDataYear = db.get_statistic_sales_per_year_withYear(this.startTime.format("%Y"));
+       StatisticSalesPerYear[] productsDataYear = db.get_statistic_sales_per_year();
        data += "For Year\n";
        foreach (StatisticSalesPerYear productData in productsDataYear) {
          data += "%s: %s €\n".printf(productData.year, productData.total.to_string());
