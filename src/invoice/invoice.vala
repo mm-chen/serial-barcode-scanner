@@ -147,7 +147,7 @@ public class InvoiceImplementation {
 
 		if(!temporary){
 			prevtimestamp = new DateTime.from_unix_local(timestamp).add_months(-1).to_unix();
-			var faelligkeitsdatum = new DateTime.from_unix_local(timestamp).add_days(10);
+			var faelligkeitsdatum = new DateTime.from_unix_local(timestamp);
 			faelligkeitsdatumstring = faelligkeitsdatum.format(dateFormat);
 		}
 
