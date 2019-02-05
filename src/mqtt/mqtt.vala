@@ -20,10 +20,10 @@ public class MQTTImplementation {
 	private string mqttBroker;
 
 	public MQTTImplementation(string broker) {
-    this.mqttBroker = broker;
+    		this.mqttBroker = broker;
 	}
 
-  public void push_message(string message, string topic) {
-		Posix.system("mosquitto_pub -h " + this.mqttBroker + " -t "+ topic +" -r -m '" + message.replace("'", "\'") +"'");
-  }
+  	public void push_message(string message, string topic) {
+		Posix.system("mosquitto_pub -h " + this.mqttBroker + " -t "+ topic +" -r -m '" + message.replace("'", "''") +"'");
+  	}
 }
