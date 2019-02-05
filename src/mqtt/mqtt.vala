@@ -24,6 +24,6 @@ public class MQTTImplementation {
 	}
 
   public void push_message(string message, string topic) {
-		Posix.system("mosquitto_pub -h " + this.mqttBroker + " -t "+ topic +" -r -m '" + message +"'");
+		Posix.system("mosquitto_pub -h " + this.mqttBroker + " -t "+ topic +" -r -m '" + message.replace("'", "\'") +"'");
   }
 }
