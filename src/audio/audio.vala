@@ -1,4 +1,5 @@
 /* Copyright 2012-2013, Sebastian Reichel <sre@ring0.de>
+ * Copyright 2019, Johannes Rudolph <johannes.rudolph@gmx.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -59,7 +60,9 @@ public class AudioPlayerImplementation {
 
 			FileInfo file_info;
 			while ((file_info = enumerator.next_file ()) != null) {
-				result += file_info.get_name();
+				if(file_info.get_name() != ".gitignore") {
+					result += file_info.get_name();
+				}
 			}
 
 			return result;
