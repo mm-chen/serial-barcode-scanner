@@ -41,7 +41,7 @@ CREATE VIEW IF NOT EXISTS current_cashbox_status AS
 CREATE VIEW IF NOT EXISTS singleDaysSinceFirstSale AS
 	WITH RECURSIVE
 	singledays(x) AS (
-	 SELECT (SELECT strftime('%s',datetime( (select s.timestamp from sales s order by s.timestamp asc limit 1), 'unixepoch','start of year'))*1)
+	 SELECT (SELECT strftime('%s',datetime( (select s.timestamp from sales s where s.user >= 0 order by s.timestamp asc limit 1), 'unixepoch','start of year'))*1)
 	 UNION ALL
 	 SELECT x+86400 FROM singledays
 	  LIMIT 10000
