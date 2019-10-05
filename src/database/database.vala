@@ -146,7 +146,7 @@ public class DataBase : Object {
 		queries["user_invoice_sum"]  = "SELECT SUM(CASE WHEN user < 0 THEN (SELECT SUM(price * amount) / SUM(amount) FROM restock WHERE restock.product = id AND restock.timestamp <= sales.timestamp) else (SELECT CASE WHEN user=0 THEN guestprice else memberprice END FROM prices WHERE product = id AND valid_from <= timestamp ORDER BY valid_from DESC LIMIT 1) END) FROM sales INNER JOIN products ON sales.product = products.id WHERE user = ? AND timestamp >= ? AND timestamp <= ? ORDER BY timestamp";
 		queries["cashbox_status"]    = "SELECT amount FROM current_cashbox_status";
 		queries["cashbox_add"]       = "INSERT INTO cashbox_diff ('user', 'amount', 'timestamp') VALUES (?, ?, ?)";
-		queries["cashbox_history"]   = "SELECT user, amount, timestamp FROM cashbox_diff ORDER BY timestamp DESC LIMIT 10";
+		queries["cashbox_history"]   = "SELECT user, amount, timestamp FROM cashbox_diff ORDER BY timestamp DESC";
 		queries["cashbox_changes"]   = "SELECT user, amount, timestamp FROM cashbox_diff WHERE timestamp >= ? and timestamp < ? ORDER BY timestamp ASC";
 		queries["alias_ean_add"]     = "INSERT OR IGNORE INTO ean_aliases (id, real_ean) VALUES (?, ?)";
 		queries["alias_ean_get"]     = "SELECT real_ean FROM ean_aliases WHERE id = ?";
