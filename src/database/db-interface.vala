@@ -105,6 +105,7 @@ public struct PriceEntry {
 	public int64 valid_from;
 	public Price memberprice;
 	public Price guestprice;
+	public Product product;
 }
 
 public struct RestockEntry {
@@ -113,6 +114,9 @@ public struct RestockEntry {
 	public string price;
 	public int supplier;
 	public int64 best_before_date;
+	public int order_id;
+	public int user;
+	public Product product;
 }
 
 public struct BestBeforeEntry {
@@ -130,6 +134,10 @@ public struct Supplier {
 	public string street;
 	public string phone;
 	public string website;
+	public string supplier_number;
+	public string customer_number;
+	public string order_format;
+	public string order_transport;
 }
 
 public struct UserInfo {
@@ -224,6 +232,16 @@ public struct Sale {
 	public string userFirstname;
 	public string userLastname;
 	public Price price;
+}
+
+public struct Order {
+	public int id;
+	public Product product;
+	public int amount;
+	public int64 created_at;
+	public int64 orderd_at;
+	public int64 received_at;
+	public Supplier supplier;
 }
 
 public struct CashboxDiff {
