@@ -345,7 +345,6 @@ public class DataBase : Object {
 			entry.valid_from = statements["prices"].column_int64(0);
 			entry.memberprice = statements["prices"].column_int(1);
 			entry.guestprice = statements["prices"].column_int(2);
-			entry.product.ean = product;
 
 			result += entry;
 		}
