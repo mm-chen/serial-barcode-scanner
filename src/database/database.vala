@@ -340,13 +340,12 @@ public class DataBase : Object {
 
 		statements["prices"].reset();
 		statements["prices"].bind_text(1, "%llu".printf(product));
-		wh:1ile(statements["prices"].step() == Sqlite.ROW) {
+		while(statements["prices"].step() == Sqlite.ROW) {
 			PriceEntry entry = {};
 			entry.valid_from = statements["prices"].column_int64(0);
 			entry.memberprice = statements["prices"].column_int(1);
 			entry.guestprice = statements["prices"].column_int(2);
 			entry.product.ean = product;
-
 
 			result += entry;
 		}
