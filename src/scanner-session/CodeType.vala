@@ -21,6 +21,8 @@
   USERINFO,
  	EAN,
  	RFIDEM4100,
+  DISPLAYON,
+  DISPLAYOFF,
  	UNKNOWN
  }
 
@@ -36,7 +38,11 @@
        return ScannerCodeType.LOGOUT;
      } else if(scannerdata == "USERINFO") {
        return ScannerCodeType.USERINFO;
-     }else if(scannerdata.length == 10) {
+     } else if(scannerdata == "DISPLAYON") {
+       return ScannerCodeType.DISPLAYON;
+     } else if(scannerdata == "DISPLAYOFF") {
+       return ScannerCodeType.DISPLAYOFF;
+     } else if(scannerdata.length == 10) {
        return ScannerCodeType.RFIDEM4100;
      } else {
        //Handle EAN Code

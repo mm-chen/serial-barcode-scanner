@@ -12,6 +12,7 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
+using Posix;
 
 public struct ShoppingCardResult {
    public uint8 amountOfItems;
@@ -49,6 +50,17 @@ public class UserState {
       case ScannerCodeType.GUEST:
       case ScannerCodeType.RFIDEM4100:
         return this.relogin(scannerdata,usersession);
+      case ScannerCodeType.DISPLAYON:
+        Posix.system("vbetool dpms on");
+        ScannerResult scannerResult = ScannerResult();
+        scannerResult.usersession = usersession;
+        return scannerResult;
+      case ScannerCodeType.DISPLAYOFF:
+        Posix.system("vbetool dpms off");
+        ScannerResult scannerResult = ScannerResult();
+        scannerResult.usersession = usersession;
+        scannerResult.nextstate = ScannerSessionState.READY;
+        return scannerResult;
     }
     ScannerResult scannerResult = ScannerResult();
     scannerResult.usersession = usersession;

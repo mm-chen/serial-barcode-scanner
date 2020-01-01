@@ -12,6 +12,7 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
+using Posix;
 
 public class ReadyState {
 
@@ -48,6 +49,14 @@ public class ReadyState {
           int user = db.get_userid_for_rfid(scannerdata);
           scannerResult.nextScannerdata = {@"USER $user"};
           return scannerResult;
+      case ScannerCodeType.DISPLAYON:
+        Posix.system("vbetool dpms on");
+        scannerResult.nextstate = ScannerSessionState.READY;
+        return scannerResult;
+      case ScannerCodeType.DISPLAYOFF:
+        Posix.system("vbetool dpms off");
+        scannerResult.nextstate = ScannerSessionState.READY;
+        return scannerResult;
       default:
         scannerResult.nextstate = ScannerSessionState.READY;
         return scannerResult;
