@@ -50,11 +50,11 @@ public class ReadyState {
           scannerResult.nextScannerdata = {@"USER $user"};
           return scannerResult;
       case ScannerCodeType.DISPLAYON:
-        Posix.system("vbetool dpms on");
+        Posix.system("sudo /usr/sbin/vbetool dpms on");
         scannerResult.nextstate = ScannerSessionState.READY;
         return scannerResult;
       case ScannerCodeType.DISPLAYOFF:
-        Posix.system("vbetool dpms off");
+        Posix.system("sudo /usr/sbin/vbetool dpms off");
         scannerResult.nextstate = ScannerSessionState.READY;
         return scannerResult;
       default:
