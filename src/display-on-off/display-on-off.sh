@@ -11,7 +11,7 @@ SOURCE="$(getConfig DISPLAY use)"
 
 if [ "$SOURCE" = "mqtt" ]; then
 	BROKER=$(getConfig MQTT broker)
-	TOPIC=$(getConfig MQTT topic)
+	TOPIC=$(getConfig MQTT displayOnOffTopic)
 	ON=$(getConfig MQTT displayOn)
 	OFF=$(getConfig MQTT displayOff)
 
